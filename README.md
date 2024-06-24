@@ -34,8 +34,8 @@ This project is a web application built with Node.js and Express to scrape Linke
 
 1. **Clone the Repository**:
 ```bash
-   git clone https://github.com/your_username/your_repository.git
-   cd your_repository
+   git clone https://github.com/RahulRmCoder/Book-Suggester-with-Amazon-Bedrock.git
+   cd Book-Suggester-with-Amazon-Bedrock
 ```
 2. **Install Dependencies**:
 ```bash
