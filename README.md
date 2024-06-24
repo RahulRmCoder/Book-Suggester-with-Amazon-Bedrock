@@ -1,4 +1,4 @@
-# LinkedIn Profile Scraper Web Application
+# Book-Suggester-with-Amazon-Bedrock
 
 This project is a web application built with Node.js and Express to scrape LinkedIn profile data using Selenium in Python. It includes functionality to validate LinkedIn URLs, scrape data from profiles, and send the scraped data to an external API.
 
