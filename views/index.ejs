@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Title of the webpage -->
+    <title>LinkedIn Scraper</title>
+    <!-- Link to the external CSS file for styling -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Main heading of the webpage -->
+        <h1>LinkedIn Profile Scraper</h1>
+
+        <!-- Form for submitting the LinkedIn URL -->
+        <form id="scrapeForm" action="/scrape" method="POST">
+            <!-- Label for the LinkedIn URL input field -->
+            <label for="linkedin_url">LinkedIn URL:</label>
+            <!-- Input field for the LinkedIn URL -->
+            <input type="text" id="linkedin_url" name="linkedin_url" required>
+            <!-- Submit button to initiate the scraping process -->
+            <button type="submit">Scrape</button>
+        </form>
+
+        <!-- Div for displaying validation messages -->
+        <div id="message"></div>
+
+        <!-- Div for displaying the loading spinner while scraping -->
+        <div id="loader" style="display: none;">
+            <div class="spinner"></div>
+        </div>
+
+        <!-- Div for displaying the result of the scraping -->
+        <div id="result" style="display: none;"></div>
+
+        <!-- Link to the external JavaScript file for form validation -->
+        <script src="validate.js"></script>
+    </div>
+</body>
+</html>

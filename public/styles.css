@@ -1,0 +1,108 @@
+/* Style for the body of the webpage */
+body {
+    font-family: Arial, sans-serif; /* Use Arial as the default font */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    display: flex; /* Use flexbox layout */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    height: 100vh; /* Full viewport height */
+    background-color: #f4f4f4; /* Light grey background color */
+}
+
+/* Style for the container that holds the content */
+.container {
+    background: #fff; /* White background color */
+    padding: 2rem; /* Padding around the content */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    width: 80%; /* Width relative to the viewport */
+    max-width: 600px; /* Maximum width for readability */
+}
+
+/* Style for the main heading */
+h1 {
+    margin-bottom: 1rem; /* Space below the heading */
+    text-align: center; /* Center align heading */
+}
+
+/* Style for the form */
+form {
+    display: flex; /* Use flexbox layout */
+    flex-direction: column; /* Arrange children in a column */
+}
+
+/* Style for the form labels */
+label {
+    margin-bottom: 0.5rem; /* Space below each label */
+}
+
+/* Style for the form input fields */
+input {
+    margin-bottom: 1rem; /* Space below each input field */
+    padding: 0.5rem; /* Padding inside the input field */
+    border: 1px solid #ddd; /* Light grey border */
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* Style for the submit button */
+button {
+    padding: 0.5rem; /* Padding inside the button */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    background: #0073b1; /* LinkedIn blue background color */
+    color: #fff; /* White text color */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Style for the button on hover */
+button:hover {
+    background: #005582; /* Darker blue on hover */
+}
+
+/* Style for the message area (error messages) */
+#message {
+    margin-top: 1rem; /* Space above the message */
+    color: red; /* Red text color for errors */
+    text-align: center; /* Center align error messages */
+}
+
+/* Style for the result area */
+#result {
+    margin-top: 2rem; /* Space above the result */
+    padding: 1rem; /* Padding inside the result area */
+    border: 1px solid #ddd; /* Light grey border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #f9f9f9; /* Very light grey background color */
+    font-size: 0.9rem; /* Slightly smaller text size */
+    line-height: 1.5; /* Line height for readability */
+}
+
+/* Style for the result heading */
+#result h2 {
+    margin-bottom: 1rem; /* Space below the heading */
+    color: #0073b1; /* LinkedIn blue text color */
+}
+
+/* Style for the paragraphs inside the result area */
+#result p {
+    margin-bottom: 0.5rem; /* Space below each paragraph */
+}
+
+/* Style for the loading spinner */
+.spinner {
+    display: block; /* Display as a block element */
+    margin: 20px auto; /* Center horizontally with margin */
+    width: 50px; /* Width of the spinner */
+    height: 50px; /* Height of the spinner */
+    border: 5px solid #f3f3f3; /* Light grey border */
+    border-radius: 50%; /* Round shape */
+    border-top-color: #0073b1; /* Blue color for the top border */
+    animation: spin 1s linear infinite; /* Spin animation */
+}
+
+/* Keyframes for the spin animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); } /* Start at 0 degrees */
+    100% { transform: rotate(360deg); } /* End at 360 degrees (full circle) */
+}
