@@ -4,7 +4,7 @@ This project is a web application built with Node.js and Express to scrape Linke
 
 ## Project Structure
 
-my_web_scraper_app/
+<pre>my_web_scraper_app/
 ├── application/
 │ └── person_scraping.py
 │ └── actions.py
@@ -15,7 +15,7 @@ my_web_scraper_app/
 ├── views/
 │ └── index.ejs
 ├── app.js
-└── package.json
+└── package.json</pre>
 
 
 ### Detailed Description
