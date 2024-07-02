@@ -55,7 +55,7 @@ app.post('/scrape', (req, res) => {
             return res.send('Invalid JSON data');
         }
 
-        const apiUrl = 'https://llm.notionpress.in/api/v1/prediction/dd343f26-5094-4e41-846f-a7c43cd47cb6';
+        const apiUrl = '';#giveExternalAPI 
 
         axios.post(apiUrl, scrapedData, {
             headers: {
