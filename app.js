@@ -30,13 +30,11 @@ app.get('/', (req, res) => {
 app.post('/scrape', (req, res) => {
     const linkedinUrl = req.body.linkedin_url;
 
-    // Updated LinkedIn URL regex to allow for different valid formats
     const linkedinRegex = /^https:\/\/[a-z]{2,3}\.linkedin\.com\/.*$/;
     if (!linkedinRegex.test(linkedinUrl)) {
         return res.send('Invalid LinkedIn URL format.');
     }
 
-    // Run the Python script with the URL to scrape data
     exec(`python Application/person_scraping.py "${linkedinUrl}"`, (error, stdout, stderr) => {
         if (error) {
             console.error(`exec error: ${error}`);
@@ -45,7 +43,6 @@ app.post('/scrape', (req, res) => {
 
         console.log('Python script output:', stdout);
 
-        // Attempt to parse the scraped JSON data
         let scrapedData;
         try {
             scrapedData = JSON.parse(stdout.trim());
@@ -54,29 +51,30 @@ app.post('/scrape', (req, res) => {
             return res.send('Error parsing scraped data.');
         }
 
-        // Validate the scraped data
         if (!isValidJSON(scrapedData)) {
             return res.send('Invalid JSON data');
         }
 
-        // Define API endpoint URL
         const apiUrl = 'https://llm.notionpress.in/api/v1/prediction/dd343f26-5094-4e41-846f-a7c43cd47cb6';
 
-        // Send scraped data to the API
         axios.post(apiUrl, scrapedData, {
             headers: {
                 'Content-Type': 'application/json'
             }
         })
         .then(response => {
-            // Handle API response
             console.log('API Response:', response.data);
-            const bookSuggestions = response.data.text; // Assuming "text" field contains the suggestions
+            const bookSuggestions = response.data.text;
 
-            // Render response on the webpage (with HTML structure)
             res.send(`
                 <h2>Scraped Data</h2>
                 <pre>${bookSuggestions}</pre>
+                <button id="backButton" onclick="goBack()">Back</button>
+                <script>
+                    function goBack() {
+                        window.location.href = "/";
+                    }
+                </script>
             `);
         })
         .catch(err => {

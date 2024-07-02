@@ -1,10 +1,12 @@
-# Book Suggester with Amazon Bedrock
+# Book-Suggester-with-Amazon-Bedrock
+
+### (In this Version 1.2, I have optimized the app. Previously, we had to log in for each scraping session. Now, once we log in, the session is stored as cookies, allowing us to scrape multiple profiles without logging in each time.)
 
 This project is a web application built with Node.js and Express designed to scrape LinkedIn profile data using Selenium in Python. It includes functionality to validate LinkedIn URLs, scrape data from profiles, and send the scraped data to an external API. The API integrates with Amazon Bedrock to suggest books that individuals can potentially publish based on the information gathered from their LinkedIn profiles. The output will provide titles of recommended books along with descriptions explaining why these books are suitable for publication by the individuals whose LinkedIn URLs were scraped.
 
 ## Project Structure
-
-<pre>my_web_scraper_app/
+<pre>
+my_web_scraper_app/
 ├── application/
 │ └── person_scraping.py
 │ └── actions.py
@@ -15,7 +17,8 @@ This project is a web application built with Node.js and Express designed to scr
 ├── views/
 │ └── index.ejs
 ├── app.js
-└── package.json</pre>
+└── package.json
+</pre>
 
 
 ### Detailed Description
