@@ -32,8 +32,8 @@ def scrape_linkedin_data(linkedin_url):
     driver = webdriver.Chrome(service=service, options=chrome_options)
 
     # LinkedIn login credentials (to be provided)
-    email = "rahulrajasekharanmenon64325@gmail.com"
-    password = "Rahul@25Rm"
+    email = "rrmgoat@gmail.com"
+    password = "RRM@25@12345"
 
     # Log in to LinkedIn
     actions.login(driver, email, password)  # Perform login using provided credentials
@@ -96,6 +96,57 @@ def scrape_linkedin_data(linkedin_url):
             profile_data['about'] = 'About section not available'
             print("About section not found")
 
+        # Scrape experience section
+        try:
+            experience_url = linkedin_url + "details/experience/"
+            driver.get(experience_url)
+            
+            WebDriverWait(driver, 2).until(EC.visibility_of_element_located((By.CLASS_NAME, "pvs-list__paged-list-item")))
+            try:
+                experience_elements = driver.find_elements(By.CLASS_NAME, "pvs-list__paged-list-item")
+                experiences = [element.text.strip().replace('\n', '\\n') for element in experience_elements if element.text.strip()]
+                profile_data['experience'] = experiences
+            except NoSuchElementException:
+                profile_data['experience'] = ["Experience not available"]
+                print("Experience not found")
+        except TimeoutException:
+            profile_data['experience'] = ["Experience section did not load in time"]
+            print("Experience section did not load in time")
+
+        # Scrape education section
+        try:
+            education_url = linkedin_url + "details/education/"
+            driver.get(education_url)
+            
+            WebDriverWait(driver, 2).until(EC.visibility_of_element_located((By.CLASS_NAME, "pvs-list__paged-list-item")))
+            try:
+                education_elements = driver.find_elements(By.CLASS_NAME, "pvs-list__paged-list-item")
+                educations = [element.text.strip().replace('\n', '\\n') for element in education_elements if element.text.strip()]
+                profile_data['education'] = educations
+            except NoSuchElementException:
+                profile_data['education'] = ["Education not available"]
+                print("Education not found")
+        except TimeoutException:
+            profile_data['education'] = ["Education section did not load in time"]
+            print("Education section did not load in time")
+
+        # Scrape projects section
+        try:
+            projects_url = linkedin_url + "details/projects/"
+            driver.get(projects_url)
+            
+            WebDriverWait(driver, 2).until(EC.visibility_of_element_located((By.CLASS_NAME, "pvs-list__paged-list-item")))
+            try:
+                projects_elements = driver.find_elements(By.CLASS_NAME, "pvs-list__paged-list-item")
+                projects = [element.text.strip().replace('\n', '\\n') for element in projects_elements if element.text.strip()]
+                profile_data['projects'] = projects
+            except NoSuchElementException:
+                profile_data['projects'] = ["Projects not available"]
+                print("Projects not found")
+        except TimeoutException:
+            profile_data['projects'] = ["Projects section did not load in time"]
+            print("Projects section did not load in time")
+
         # Navigate to the skills section
         skills_url = linkedin_url + "details/skills/"
         driver.get(skills_url)
@@ -112,13 +163,16 @@ def scrape_linkedin_data(linkedin_url):
                 profile_data['skills'] = ["Skills not available"]
                 print("Skills not found")
         except TimeoutException:
-            profile_data['skills'] = ["Skills not available"]
+            profile_data['skills'] = ["Skills section did not load in time"]
             print("Skills section did not load in time")
 
         # Concatenate fields into a single string
         question = (f"Name: {profile_data.get('name', '')}, Headline: {profile_data.get('headline', '')}, "
                     f"Location: {profile_data.get('location', '')}, Connections: {profile_data.get('connections', '')}, "
-                    f"About: {profile_data.get('about', '')}, Skills: {', '.join(profile_data.get('skills', []))}")
+                    f"About: {profile_data.get('about', '')}, Experience: {', '.join(profile_data.get('experience', []))}, "
+                    f"Education: {', '.join(profile_data.get('education', []))}, "
+                    f"Projects: {', '.join(profile_data.get('projects', []))}, "
+                    f"Skills: {', '.join(profile_data.get('skills', []))}")
 
         # Construct output dictionary
         output = {
