@@ -24,8 +24,8 @@ def scrape_linkedin_data(linkedin_url):
     driver = webdriver.Chrome(service=service, options=chrome_options)
 
     # LinkedIn login credentials
-    email = "rrmgoat@gmail.com"
-    password = "RRM@25@12345"
+    email = ""
+    password = ""
     cookies_file = 'cookies.json'
 
     if os.path.exists(cookies_file):
