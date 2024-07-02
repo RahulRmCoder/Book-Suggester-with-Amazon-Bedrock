@@ -60,7 +60,7 @@ app.post('/scrape', (req, res) => {
         }
 
         // Define API endpoint URL
-        const apiUrl = 'https://llm.notionpress.in/api/v1/prediction/dd343f26-5094-4e41-846f-a7c43cd47cb6';
+        const apiUrl = '';#GiveExternalAPI
 
         // Send scraped data to the API
         axios.post(apiUrl, scrapedData, {
