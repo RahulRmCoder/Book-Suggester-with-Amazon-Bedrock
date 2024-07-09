@@ -32,8 +32,8 @@ def scrape_linkedin_data(linkedin_url):
     driver = webdriver.Chrome(service=service, options=chrome_options)
 
     # LinkedIn login credentials (to be provided)
-    email = "rahulrajasekharanmenon64325@gmail.com"
-    password = "Rahul@25Rm"
+    email = ""
+    password = ""
 
     # Log in to LinkedIn
     actions.login(driver, email, password)  # Perform login using provided credentials
